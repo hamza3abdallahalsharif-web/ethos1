@@ -285,6 +285,21 @@ function headPoolAll(){
   return{b,g};
 }
 
+/* ---------------- live candidates, added by the teacher, synced from the server ----------------
+   These are kept OUT of the baked-in ROSTER (so no redeploy is needed) and merged into DATA/ALL
+   on top of it. Every device pulls the same list from the sheet, so it's identical everywhere. */
+function mergeCandidate_(c){
+  const y=+c.year,cl=String(c.cls||"").toUpperCase();
+  if(!DATA[y]||!DATA[y][cl]||!c.id||ALL[c.id])return;               // unknown class or already merged
+  const i=DATA[y][cl].length;
+  const p={id:c.id,name:c.name,av:AVATARS[(i*7+3)%AVATARS.length],color:AV_COLORS[i%AV_COLORS.length],cls:`${y}${cl}`,sx:c.sex||"n"};
+  DATA[y][cl].push(p);ALL[p.id]=p;
+}
+async function loadCandidates(){
+  if(!serverMode)return;
+  try{const j=await api("candidates_list");if(j&&j.ok&&Array.isArray(j.candidates))j.candidates.forEach(mergeCandidate_)}catch(e){}
+}
+
 /* =====================================================================
    DEVICE MEMORY  (phone lock is stored in 4 places: localStorage, cookie,
    IndexedDB and – when api.php exists – the SERVER)
@@ -595,7 +610,7 @@ const LEVEL_TXT={
 async function screenElection(){
   const my=navId;state.el=null;state.picks=[];state.hb=null;state.hg=null;
   app.innerHTML=`${hero("What would you like to vote in? 🗳️")}<div class="card center"><div style="font-size:3rem">⏳</div><p>Loading…</p></div>`;
-  await headLoad();
+  await Promise.all([headLoad(),loadCandidates()]);
   const phone=state.mode==="phone";
   const cLocked=phone&&await isLockedAny("council");
   const r=HEAD.round,hOpen=(r===1||r===3),hOff=HEAD.enabled===false;
@@ -955,29 +970,84 @@ function screenReveal(){
   step();
 }
 
+/* ---------------- Candidates : teacher admin (add / remove, synced live to every device) ---------------- */
+const CINPUT="font:inherit;font-size:1.05rem;border:3px solid var(--purple);border-radius:16px;padding:10px 14px;background:var(--card-2);color:var(--ink)";
+let candYear=4,candCls="A",candList=[];
+async function refreshCandAdmin(){
+  try{const j=await api("candidates_list",{password:resPass});candList=(j&&j.ok&&j.candidates)||[]}catch(e){}
+  paintCandAdmin();
+}
+function paintCandAdmin(){
+  const el=document.getElementById("candsPane");if(!el)return;
+  const isHeadYr=candYear===10||candYear===11;
+  const dynIds=new Set(candList.filter(c=>+c.year===candYear&&c.cls===candCls).map(c=>c.id));
+  const built=((DATA[candYear]&&DATA[candYear][candCls])||[]).filter(p=>!dynIds.has(p.id));
+  const dyn=candList.filter(c=>+c.year===candYear&&c.cls===candCls);
+  const yTabs=ALL_YEARS.map(y=>`<button class="tab ${y===candYear?"on":""}" data-y="${y}">Year ${y}</button>`).join("");
+  const cTabs=CLASSES.map(c=>`<button class="tab ${c===candCls?"on":""}" data-c="${c}">${candYear}${c}</button>`).join("");
+  const rowsHtml=built.map(p=>`<div class="rr"><span>${p.av} ${p.name}</span><span></span><small style="text-align:right">built-in</small></div>`).join("")
+    +dyn.map(c=>`<div class="rr"><span>${c.name}${isHeadYr?` <small>(${c.sex==="g"?"Head Girl":"Head Boy"})</small>`:""}</span><span></span><button class="btn red" style="padding:4px 10px;font-size:.8rem" data-rm="${c.id}">✕ Remove</button></div>`).join("");
+  el.innerHTML=`<div class="note">Add a candidate here and it shows up on every phone &amp; computer within a few seconds — no redeploy needed.</div>
+  <div class="tabs">${yTabs}</div><div class="tabs">${cTabs}</div>
+  <div class="rcls" style="margin-bottom:14px"><h3>Class ${candYear}${candCls}</h3>${rowsHtml||"<small>No candidates yet — add one below.</small>"}</div>
+  <div class="row">
+    <input id="candName" type="text" placeholder="Candidate full name" style="${CINPUT};flex:1;min-width:200px" autocomplete="off">
+    ${isHeadYr?`<select id="candSex" style="${CINPUT}"><option value="b">👦 Head Boy candidate</option><option value="g">👧 Head Girl candidate</option></select>`:""}
+    <button class="btn green" id="candAdd">➕ Add candidate</button>
+  </div>`;
+  el.querySelectorAll("[data-y]").forEach(b=>b.onclick=()=>{sfx.click();candYear=+b.dataset.y;paintCandAdmin()});
+  el.querySelectorAll("[data-c]").forEach(b=>b.onclick=()=>{sfx.click();candCls=b.dataset.c;paintCandAdmin()});
+  el.querySelectorAll("[data-rm]").forEach(b=>b.onclick=()=>removeCandidate(b.dataset.rm));
+  const nameEl=document.getElementById("candName");
+  const doAdd=()=>addCandidate();
+  const addBtn=document.getElementById("candAdd");if(addBtn)addBtn.onclick=doAdd;
+  if(nameEl)nameEl.addEventListener("keydown",e=>{if(e.key==="Enter")doAdd()});
+}
+async function addCandidate(){
+  const nameEl=document.getElementById("candName"),name=(nameEl&&nameEl.value||"").trim();
+  if(!name){sfx.error();popup({icon:"🤔",title:"Name needed",text:"Type the candidate's full name first.",buttons:[{label:"OK",cls:"green"}]});return}
+  const sexEl=document.getElementById("candSex"),sex=sexEl?sexEl.value:undefined;
+  try{
+    const j=await api("candidate_add",{password:resPass,year:candYear,cls:candCls,name,sex});
+    if(!j||!j.ok){sfx.error();popup({icon:"😕",title:"Could not add",text:"Something went wrong — try again.",buttons:[{label:"OK",cls:"green"}]});return}
+    sfx.win();mergeCandidate_(j);await refreshCandAdmin();
+  }catch(e){sfx.error()}
+}
+async function removeCandidate(id){
+  sfx.click();
+  popup({icon:"⚠️",title:"Remove this candidate?",text:"They'll no longer appear on the ballot. Votes already cast for them stay counted in the results.",buttons:[{label:"Cancel",cls:"green"},{label:"Remove",cls:"red",fn:async()=>{
+    try{await api("candidate_remove",{password:resPass,id})}catch(e){}
+    await refreshCandAdmin();
+  }}]});
+}
+
 function screenResults(){
   app.innerHTML=`${hero("📊 Election results")}<div class="card">
-  <div class="tabs" id="mainTabs"><button class="tab" data-t="council">🗳️ Student Council</button><button class="tab" data-t="head">👑 Head Boy &amp; Girl</button></div>
+  <div class="tabs" id="mainTabs"><button class="tab" data-t="council">🗳️ Student Council</button><button class="tab" data-t="head">👑 Head Boy &amp; Girl</button><button class="tab" data-t="cands">🧑‍🎓 Candidates</button></div>
   <div id="councilPane"><div id="resTop"></div><div class="tabs" id="ryTabs"></div><div id="resBody"></div></div>
   <div id="headPane" style="display:none"></div>
-  <div class="row" style="margin-top:18px"><button class="btn" id="back">⬅ Back</button><button class="btn green" id="csv">⬇ Save CSV</button><button class="btn red" id="reset">🗑 Reset</button></div></div>`;
+  <div id="candsPane" style="display:none"></div>
+  <div class="row" style="margin-top:18px" id="resActions"><button class="btn" id="back">⬅ Back</button><button class="btn green" id="csv">⬇ Save CSV</button><button class="btn red" id="reset">🗑 Reset</button></div></div>`;
   const setTab=()=>{
     document.querySelectorAll("#mainTabs .tab").forEach(t=>t.classList.toggle("on",t.dataset.t===resTab));
     document.getElementById("councilPane").style.display=resTab==="council"?"":"none";
     document.getElementById("headPane").style.display=resTab==="head"?"":"none";
-    document.getElementById("reset").textContent=resTab==="council"?"🗑 Reset council votes":"🗑 Reset Head election";
+    document.getElementById("candsPane").style.display=resTab==="cands"?"":"none";
+    document.getElementById("csv").style.display=resTab==="cands"?"none":"";
+    document.getElementById("reset").style.display=resTab==="cands"?"none":"";
+    if(resTab!=="cands")document.getElementById("reset").textContent=resTab==="council"?"🗑 Reset council votes":"🗑 Reset Head election";
   };
   const refresh=async()=>{try{
     if(resTab==="council"){lastRes=await fetchResults();paintResults()}
-    else{const x=await fetchHeadResults(),sig=JSON.stringify(x);if(x.head)HEAD=normHead(x.head);if(sig!==lastSig){lastSig=sig;lastHead=x;paintHead()}}
+    else if(resTab==="head"){const x=await fetchHeadResults(),sig=JSON.stringify(x);if(x.head)HEAD=normHead(x.head);if(sig!==lastSig){lastSig=sig;lastHead=x;paintHead()}}
   }catch(e){}};
   window.refreshNow=async()=>{lastSig="";await refresh()};
   setTab();
-  document.querySelectorAll("#mainTabs .tab").forEach(t=>t.onclick=()=>{sfx.click();resTab=t.dataset.t;lastSig="";setTab();if(resTab==="head"&&lastHead)paintHead();refresh()});
+  document.querySelectorAll("#mainTabs .tab").forEach(t=>t.onclick=()=>{sfx.click();resTab=t.dataset.t;lastSig="";setTab();if(resTab==="head"&&lastHead)paintHead();if(resTab==="cands")refreshCandAdmin();else refresh()});
   if(resTab==="council"&&lastRes)paintResults();
   if(resTab==="head"&&lastHead){if(HEAD.round>0)hLevel=Math.min(HEAD.round,4);paintHead()}
-  refresh();
-  if(serverMode)resTimer=setInterval(refresh,2000);
+  if(resTab==="cands")refreshCandAdmin();else refresh();
+  if(serverMode)resTimer=setInterval(()=>{if(resTab!=="cands")refresh()},2000);
   document.getElementById("back").onclick=()=>{sfx.click();resPass=null;go(screenHome)};
   document.getElementById("csv").onclick=()=>{
     sfx.click();const isH=resTab==="head",d=isH?lastHead:lastRes;if(!d)return;
@@ -1013,6 +1083,7 @@ addEventListener("pageshow",e=>{if(e.persisted&&(state.mode==="phone"||qrEntry))
 (async function boot(){
   const minWait=new Promise(r=>setTimeout(r,700));
   await detectServer();
+  await loadCandidates();
   await minWait;
   const sp=document.getElementById("splash");sp.classList.add("out");setTimeout(()=>sp.remove(),260);
   if(qrEntry){state.mode="phone";go(screenElection);return}
