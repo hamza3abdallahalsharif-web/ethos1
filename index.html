@@ -31,13 +31,13 @@ body{
 @keyframes bgshift{0%{background-position:0% 50%}50%{background-position:100% 50%}100%{background-position:0% 50%}}
 
 /* ---------- splash: logo in a circle + loading line ---------- */
-#splash{position:fixed;inset:0;z-index:500;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:28px;background:linear-gradient(135deg,var(--bg1),var(--bg2),var(--bg3),var(--bg4));background-size:300% 300%;animation:bgshift 8s ease infinite;transition:opacity .6s,transform .6s}
+#splash{position:fixed;inset:0;z-index:500;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:28px;background:linear-gradient(135deg,var(--bg1),var(--bg2),var(--bg3),var(--bg4));background-size:300% 300%;animation:bgshift 8s ease infinite;transition:opacity .25s,transform .25s}
 #splash.out{opacity:0;transform:scale(1.1);pointer-events:none}
 .sp-logo{width:min(48vw,220px);aspect-ratio:1;border-radius:50%;background:#fff;border:8px solid #ffd23f;box-shadow:0 0 0 9px rgba(255,255,255,.35),0 18px 40px rgba(0,0,0,.35);overflow:hidden;animation:beat 1.6s ease-in-out infinite}
 .sp-logo img{width:100%;height:100%;object-fit:contain;display:block}
 @keyframes beat{0%,100%{transform:scale(1)}50%{transform:scale(1.07)}}
 .sp-line{width:min(72vw,340px);height:14px;border-radius:14px;background:rgba(255,255,255,.35);overflow:hidden;box-shadow:inset 0 3px 0 rgba(0,0,0,.15)}
-.sp-line i{display:block;height:100%;width:0;border-radius:14px;background:linear-gradient(90deg,#ffd23f,#ff4fa3,#19d3c5);animation:fillbar 2.3s cubic-bezier(.5,0,.3,1) forwards}
+.sp-line i{display:block;height:100%;width:0;border-radius:14px;background:linear-gradient(90deg,#ffd23f,#ff4fa3,#19d3c5);animation:fillbar .8s cubic-bezier(.5,0,.3,1) forwards}
 @keyframes fillbar{to{width:100%}}
 .sp-txt{color:#fff;font-weight:700;font-size:1.25rem;text-shadow:0 3px 0 rgba(0,0,0,.2)}
 
@@ -54,7 +54,7 @@ body{
 @keyframes sway{0%,100%{transform:translateY(-30px) scale(1)}50%{transform:translateY(30px) scale(1.25)}}
 .credit{position:fixed;right:12px;bottom:6px;z-index:35;pointer-events:none;white-space:nowrap;font-size:1.7rem;font-weight:700;letter-spacing:.5px;color:#fff;text-shadow:0 2px 0 rgba(0,0,0,.3)}
 body.voting .credit{bottom:auto;top:8px;right:12px}
-.mascot{position:fixed;bottom:10px;z-index:40;font-size:3rem;cursor:pointer;user-select:none;filter:drop-shadow(0 6px 6px rgba(0,0,0,.25));transition:bottom .3s}
+.mascot{position:fixed;bottom:10px;z-index:40;font-size:3rem;cursor:pointer;user-select:none;filter:drop-shadow(0 6px 6px rgba(0,0,0,.25));transition:bottom .15s}
 .mascot.left{left:64px}.mascot.right{right:64px}
 .mascot.wiggle{animation:wiggle .7s}
 @keyframes wiggle{0%,100%{transform:rotate(0)}20%{transform:rotate(-25deg) scale(1.2)}40%{transform:rotate(22deg) scale(1.2)}60%{transform:rotate(-14deg)}80%{transform:rotate(10deg)}}
@@ -74,11 +74,11 @@ canvas#confetti{position:fixed;inset:0;pointer-events:none;z-index:200}
 .rainbow{background:linear-gradient(90deg,#ffd23f,#ff4fa3,#19d3c5,#3a86ff,#ffd23f);background-size:300% 100%;-webkit-background-clip:text;background-clip:text;color:transparent;text-shadow:none;animation:rb 5s linear infinite}
 @keyframes rb{to{background-position:300% 0}}
 @keyframes pulse{0%,100%{transform:scale(1) rotate(-4deg)}50%{transform:scale(1.15) rotate(4deg)}}
-.card{background:var(--card);border-radius:28px;padding:22px;box-shadow:0 10px 0 rgba(0,0,0,.15),0 24px 40px rgba(0,0,0,.2);animation:pop .5s cubic-bezier(.2,1.4,.4,1)}
-@keyframes pop{from{transform:scale(.7) translateY(30px);opacity:0}to{transform:none;opacity:1}}
+.card{background:var(--card);border-radius:28px;padding:22px;box-shadow:0 10px 0 rgba(0,0,0,.15),0 24px 40px rgba(0,0,0,.2);animation:pop .16s cubic-bezier(.2,1.4,.4,1)}
+@keyframes pop{from{transform:scale(.85) translateY(14px);opacity:0}to{transform:none;opacity:1}}
 .two{display:grid;grid-template-columns:1fr 1fr;gap:20px}
 @media(max-width:760px){.two{grid-template-columns:1fr}}
-.big{display:flex;flex-direction:column;align-items:center;gap:8px;text-align:center;cursor:pointer;border:0;font:inherit;color:#fff;padding:30px 18px;border-radius:30px;transition:transform .15s;box-shadow:0 10px 0 rgba(0,0,0,.22),0 20px 30px rgba(0,0,0,.2);width:100%}
+.big{display:flex;flex-direction:column;align-items:center;gap:8px;text-align:center;cursor:pointer;border:0;font:inherit;color:#fff;padding:30px 18px;border-radius:30px;transition:transform .07s;box-shadow:0 10px 0 rgba(0,0,0,.22),0 20px 30px rgba(0,0,0,.2);width:100%}
 .big:hover{transform:translateY(-6px) rotate(-1deg)}
 .big:active{transform:translateY(6px);box-shadow:0 3px 0 rgba(0,0,0,.22)}
 .big .ic{font-size:4.4rem;animation:bob 2.6s ease-in-out infinite}
@@ -89,7 +89,7 @@ canvas#confetti{position:fixed;inset:0;pointer-events:none;z-index:200}
 .big.head{background:linear-gradient(135deg,#ffb703,#fb5607)}
 .big.dim{filter:grayscale(.6);opacity:.75}
 .ybtn.dim{filter:grayscale(.6);opacity:.6}
-.btn{font:inherit;font-weight:600;font-size:1.15rem;border:0;border-radius:18px;padding:13px 24px;cursor:pointer;color:#fff;background:linear-gradient(135deg,var(--purple),var(--pink));box-shadow:0 6px 0 rgba(0,0,0,.22);transition:transform .12s}
+.btn{font:inherit;font-weight:600;font-size:1.15rem;border:0;border-radius:18px;padding:13px 24px;cursor:pointer;color:#fff;background:linear-gradient(135deg,var(--purple),var(--pink));box-shadow:0 6px 0 rgba(0,0,0,.22);transition:transform .07s}
 .btn:hover{transform:translateY(-3px)}.btn:active{transform:translateY(4px);box-shadow:0 2px 0 rgba(0,0,0,.22)}
 .btn.ghost{background:rgba(255,255,255,.22);color:#fff;box-shadow:none;border:2px solid rgba(255,255,255,.7)}
 .btn.green{background:linear-gradient(135deg,#19d3c5,#2fd66b)}
@@ -102,16 +102,16 @@ canvas#confetti{position:fixed;inset:0;pointer-events:none;z-index:200}
 #qr img,#qr canvas{display:block}
 .link{word-break:break-all;font-size:.9rem;color:var(--ink-soft);background:var(--card-2);padding:8px 12px;border-radius:12px}
 .yeargrid{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:16px;margin-top:8px}
-.ybtn{border:0;font:inherit;color:#fff;border-radius:26px;padding:22px 10px;cursor:pointer;font-size:1.2rem;font-weight:600;box-shadow:0 8px 0 rgba(0,0,0,.22);transition:transform .15s}
+.ybtn{border:0;font:inherit;color:#fff;border-radius:26px;padding:22px 10px;cursor:pointer;font-size:1.2rem;font-weight:600;box-shadow:0 8px 0 rgba(0,0,0,.22);transition:transform .07s}
 .ybtn b{display:block;font-size:3rem;line-height:1}
 .ybtn:hover{transform:translateY(-6px) rotate(-2deg)}.ybtn:active{transform:translateY(4px)}
 .tabs{display:flex;gap:10px;justify-content:center;flex-wrap:wrap;margin:6px 0 16px}
-.tab{font:inherit;font-weight:700;font-size:1.2rem;border:0;border-radius:18px;padding:10px 22px;cursor:pointer;background:var(--card-2);color:var(--ink);box-shadow:0 5px 0 rgba(0,0,0,.15);position:relative;transition:transform .12s}
+.tab{font:inherit;font-weight:700;font-size:1.2rem;border:0;border-radius:18px;padding:10px 22px;cursor:pointer;background:var(--card-2);color:var(--ink);box-shadow:0 5px 0 rgba(0,0,0,.15);position:relative;transition:transform .07s}
 .tab.on{background:linear-gradient(135deg,var(--purple),var(--pink));color:#fff;transform:translateY(-3px) scale(1.06)}
 .tab i{position:absolute;top:-9px;right:-7px;background:var(--yellow);color:#4a3200;border-radius:50%;min-width:24px;height:24px;padding:0 4px;font-size:.85rem;display:grid;place-items:center;font-style:normal;box-shadow:0 2px 0 rgba(0,0,0,.2)}
 .cands{display:grid;grid-template-columns:repeat(auto-fill,minmax(210px,1fr));gap:16px}
 @media(max-width:520px){.cands{grid-template-columns:1fr 1fr;gap:12px}}
-.cand{position:relative;border:0;font:inherit;color:var(--ink);background:var(--card-2);border-radius:26px;padding:18px 10px 14px;cursor:pointer;text-align:center;box-shadow:0 7px 0 rgba(0,0,0,.14);transition:transform .15s,box-shadow .15s;animation:pop .45s cubic-bezier(.2,1.4,.4,1) backwards}
+.cand{position:relative;border:0;font:inherit;color:var(--ink);background:var(--card-2);border-radius:26px;padding:18px 10px 14px;cursor:pointer;text-align:center;box-shadow:0 7px 0 rgba(0,0,0,.14);transition:transform .07s,box-shadow .07s;animation:pop .16s cubic-bezier(.2,1.4,.4,1) backwards}
 .cand:hover{transform:translateY(-6px) rotate(1deg)}
 .cand .av{width:86px;height:86px;border-radius:50%;margin:0 auto 8px;display:grid;place-items:center;font-size:2.8rem;box-shadow:inset 0 -6px 0 rgba(0,0,0,.15),0 5px 0 rgba(0,0,0,.12)}
 .cand .nm{font-weight:700;font-size:1.08rem;line-height:1.2}
@@ -119,12 +119,12 @@ canvas#confetti{position:fixed;inset:0;pointer-events:none;z-index:200}
 .cand .ck{position:absolute;top:8px;right:10px;width:38px;height:38px;border-radius:50%;background:var(--green);color:#fff;font-size:1.4rem;display:none;place-items:center;box-shadow:0 3px 0 rgba(0,0,0,.2)}
 .cand.sel{background:linear-gradient(160deg,#fff3a6,#ffd23f);color:#3d2b00;transform:translateY(-8px) scale(1.04);box-shadow:0 0 0 5px var(--green),0 14px 0 rgba(0,0,0,.18)}
 .cand.sel .cl{color:#6a4a00}
-.cand.sel .ck{display:grid;animation:pop .3s}
+.cand.sel .ck{display:grid;animation:pop .12s}
 .bar{position:fixed;left:0;right:0;bottom:0;z-index:30;background:var(--card);padding:12px 18px calc(12px + env(safe-area-inset-bottom));box-shadow:0 -8px 24px rgba(0,0,0,.25);display:flex;align-items:center;gap:14px;justify-content:center;flex-wrap:wrap;border-radius:26px 26px 0 0}
 .chips{display:flex;gap:8px;align-items:center;flex-wrap:wrap;justify-content:center}
-.dot{width:26px;height:26px;border-radius:50%;background:var(--card-2);border:3px dashed var(--ink-soft);transition:.2s}
+.dot{width:26px;height:26px;border-radius:50%;background:var(--card-2);border:3px dashed var(--ink-soft);transition:.1s}
 .dot.full{background:var(--green);border:3px solid var(--green);transform:scale(1.2)}
-.chip{background:var(--yellow);color:#4a3200;font-weight:600;border-radius:14px;padding:5px 12px;font-size:.95rem;animation:pop .3s}
+.chip{background:var(--yellow);color:#4a3200;font-weight:600;border-radius:14px;padding:5px 12px;font-size:.95rem;animation:pop .12s}
 .locked{text-align:center;padding:34px 20px}
 .locked .big-ic{font-size:6rem;animation:pulse 2s infinite}
 .locked h2{font-size:2rem;margin:6px 0}
@@ -145,7 +145,7 @@ canvas#confetti{position:fixed;inset:0;pointer-events:none;z-index:200}
 .rcls h3{margin:0 0 6px;font-size:1.3rem}
 .rr{display:grid;grid-template-columns:1fr 70px 34px;gap:8px;align-items:center;padding:5px 0;border-bottom:1px solid rgba(128,128,160,.22);font-size:.98rem}
 .rr:last-child{border-bottom:0}
-.meter{height:12px;border-radius:8px;background:linear-gradient(90deg,var(--teal),var(--blue));min-width:3px;transition:width .6s}
+.meter{height:12px;border-radius:8px;background:linear-gradient(90deg,var(--teal),var(--blue));min-width:3px;transition:width .25s}
 .rr b{text-align:right}
 
 /* head boy / head girl */
@@ -159,6 +159,11 @@ canvas#confetti{position:fixed;inset:0;pointer-events:none;z-index:200}
 .stepper.in .stp{background:var(--card-2);color:var(--ink);border-color:var(--ink-soft)}
 .stepper.in .stp.done{background:#2fd66b;color:#fff;border:2px solid #2fd66b}
 .stepper.in .stp.now{background:linear-gradient(135deg,#ffd23f,#ff7b2f);color:#3d2b00;border:2px solid #fff}
+.hlvls{display:flex;flex-direction:column;gap:10px;margin-top:18px}
+.hlvl{display:flex;align-items:center;gap:14px;background:var(--card-2);border-radius:18px;padding:12px 16px;text-align:left}
+.hlvl-ic{font-size:1.7rem;flex:0 0 auto}
+.hlvl.now{box-shadow:0 0 0 3px var(--yellow)}
+.hlvl.done{opacity:.75}
 .note{background:var(--card-2);border-radius:16px;padding:10px 14px;margin:10px 0;font-size:1rem;color:var(--ink-soft);text-align:center}
 .rsub h4{margin:8px 0 2px;font-size:1rem;color:var(--ink-soft)}
 .rr small{color:var(--ink-soft);font-size:.75rem}
@@ -180,9 +185,9 @@ canvas#confetti{position:fixed;inset:0;pointer-events:none;z-index:200}
 }
 
 /* popups */
-.ov{position:fixed;inset:0;background:rgba(20,8,60,.62);backdrop-filter:blur(4px);z-index:150;display:grid;place-items:center;padding:18px;animation:fade .2s}
+.ov{position:fixed;inset:0;background:rgba(20,8,60,.62);backdrop-filter:blur(4px);z-index:150;display:grid;place-items:center;padding:18px;animation:fade .1s}
 @keyframes fade{from{opacity:0}to{opacity:1}}
-.pop-box{background:var(--card);color:var(--ink);border-radius:32px;padding:28px 24px;max-width:440px;width:100%;text-align:center;box-shadow:0 12px 0 rgba(0,0,0,.2),0 30px 60px rgba(0,0,0,.4);animation:pop .45s cubic-bezier(.2,1.5,.4,1)}
+.pop-box{background:var(--card);color:var(--ink);border-radius:32px;padding:28px 24px;max-width:440px;width:100%;text-align:center;box-shadow:0 12px 0 rgba(0,0,0,.2),0 30px 60px rgba(0,0,0,.4);animation:pop .16s cubic-bezier(.2,1.5,.4,1)}
 .pop-box .pi{font-size:4.4rem;line-height:1;animation:pulse 1.6s infinite}
 .pop-box h3{font-size:1.7rem;margin:8px 0 6px}
 .pop-box p{margin:0 0 16px;font-size:1.1rem;color:var(--ink-soft)}
@@ -215,19 +220,13 @@ canvas#confetti{position:fixed;inset:0;pointer-events:none;z-index:200}
    SETTINGS
    ===================================================================== */
 const LOCAL_TEACHER_PASSWORD = "Eis@Ethos@123";   // only used in demo mode (no server). With api.php the password lives in api.php
-const YEARS   = [4,5,6,7,8,9,10,11];
+/* Student Council: Years 4-9 only — Year 10 & 11 are reserved for Head Boy & Head Girl (see below) */
+const ALL_YEARS   = [4,5,6,7,8,9,10,11];    // every year that has candidate DATA
+const YEARS       = [4,5,6,7,8,9];          // Student Council election years
 const CLASSES = ["A","B","C","D"];
-const PHONE_YEARS = [7,8,9,10,11];
+const PHONE_YEARS = [7,8,9];                // council phone years (10 & 11 removed)
 const PC_YEARS    = [4,5,6];
-const PICKS_REQUIRED = 2;
-/* Head Boy / Head Girl: Level 1 = inside each CLASS, Level 2 = whole YEAR GROUP, Level 3 = KEY STAGE group */
-const GROUPS=[
-  {id:"G456",label:"Years 4-5-6",years:[4,5,6]},
-  {id:"G789",label:"Years 7-8-9",years:[7,8,9]},
-  {id:"G10", label:"Year 10",    years:[10]},
-  {id:"G11", label:"Year 11",    years:[11]}
-];
-const groupOf=y=>GROUPS.find(g=>g.years.includes(y));
+const HEAD_YEARS  = [10,11];                // Head Boy & Head Girl candidates + nominators
 const API = "api.php";            // used only if you host on PHP hosting
 const APPS_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbwb6MtFvFwwBcK1Jm9A5uLOH38izFBHKRRWEhbM1jbQTgxjcxVC0Q6af-ePoymedbyw/exec";       // <-- GitHub Pages: paste your Google Apps Script Web app URL here (ends with /exec)
 const LOGO = document.getElementById("spImg").src;
@@ -242,13 +241,49 @@ const AVATARS = ["🦁","🐯","🦊","🐼","🐨","🦄","🐸","🐵","🦉",
 const AV_COLORS = ["#ffd23f","#ff9ecb","#8fe8df","#a5c8ff","#c9a7ff","#ffb37a","#a7f0b4","#ffa7a7"];
 function rng(seed){return function(){seed|=0;seed=seed+0x6D2B79F5|0;let t=Math.imul(seed^seed>>>15,1|seed);t=t+Math.imul(t^t>>>7,61|t)^t;return((t^t>>>14)>>>0)/4294967296}}
 function shuffle(a,r){a=a.slice();for(let i=a.length-1;i>0;i--){const j=Math.floor(r()*(i+1));[a[i],a[j]]=[a[j],a[i]]}return a}
+
+/* ---------------- REAL roster (Years 5-11), from the school's candidate sheet ----------------
+   A class with no nominee on the sheet gets one placeholder candidate: "Ethos 123.321" */
+const PLACEHOLDER="Ethos 123.321";
+const ROSTER={
+  5:{A:["Anas Mahmoud"],B:[],C:["Hala El Gazzar","Khadija Mohammed"],D:["Yassin Ghandour","Yaseen Elsayed"]},
+  6:{A:["Adham Elgamasy"],B:[],C:["Yassin Elborey"],D:["Youssef Adds","Karim Rayhan","Zein Amin"]},
+  7:{A:["Omar Hafez"],B:["Omar Marzban","Eyad Eltrahony"],C:["Cameila Bayad","Ismail Halabi"],D:["Yehia EL deeb","Shaida Kabashi","Nada Hassan"]},
+  8:{A:[],B:["Mostafa Aref"],C:[],D:["Omar Elmessiry","Lana Moawad","Hamza Elzahar","Hamza El sherif"]},
+  9:{A:["Youssef Darwish"],B:["Ishaq Darwish","Habiba Abdelmawgood","Farah Hassan","Mariam Mourad"],C:["Rokaia Mohamed"],D:[]},
+  10:{A:["Mariam Khattab","Youssef Makhlafi","Khadija Sharaf"],B:[],C:[],D:["Kadija Yasser"]},
+  11:{A:[],B:["Aisha El Samman","Mariam Amr","Carma Mohamed"],C:["Yassin Karim Ezzat","Hamza El Sherif"],D:[]}
+};
+/* gender is only needed for the Head Boy/Girl pool (Years 10 & 11) */
+const HEAD_GENDER={"Mariam Khattab":"g","Youssef Makhlafi":"b","Khadija Sharaf":"g","Kadija Yasser":"g",
+  "Aisha El Samman":"g","Mariam Amr":"g","Carma Mohamed":"g","Yassin Karim Ezzat":"b","Hamza El Sherif":"b"};
+
 const DATA={};
-YEARS.forEach(y=>{DATA[y]={};CLASSES.forEach((c,ci)=>{
-  const r=rng(y*1000+ci*97+13);
-  const b=shuffle(BOYS,r).slice(0,3),g=shuffle(GIRLS,r).slice(0,3),f=shuffle(FAMS,r).slice(0,6),av=shuffle(AVATARS,r).slice(0,6);
-  DATA[y][c]=shuffle(b.concat(g),r).map((fn,i)=>({id:`${y}${c}-${i+1}`,name:`${fn} ${f[i]}`,av:av[i],color:AV_COLORS[(i+ci)%AV_COLORS.length],cls:`${y}${c}`,sx:b.includes(fn)?"b":"g"}));
-});});
-const ALL={};YEARS.forEach(y=>CLASSES.forEach(c=>DATA[y][c].forEach(p=>ALL[p.id]=p)));
+ALL_YEARS.forEach(y=>{
+  DATA[y]={};
+  CLASSES.forEach((c,ci)=>{
+    if(y===4){    // no roster given for Year 4 — keep the original random-name generator
+      const r=rng(y*1000+ci*97+13);
+      const b=shuffle(BOYS,r).slice(0,3),g=shuffle(GIRLS,r).slice(0,3),f=shuffle(FAMS,r).slice(0,6),av=shuffle(AVATARS,r).slice(0,6);
+      DATA[y][c]=shuffle(b.concat(g),r).map((fn,i)=>({id:`${y}${c}-${i+1}`,name:`${fn} ${f[i]}`,av:av[i],color:AV_COLORS[(i+ci)%AV_COLORS.length],cls:`${y}${c}`,sx:b.includes(fn)?"b":"g"}));
+      return;
+    }
+    const roster=(ROSTER[y]&&ROSTER[y][c]&&ROSTER[y][c].length)?ROSTER[y][c]:[PLACEHOLDER];
+    DATA[y][c]=roster.map((nm,i)=>{
+      const av=AVATARS[(ci*4+i)%AVATARS.length],color=AV_COLORS[(ci*4+i)%AV_COLORS.length];
+      let sx="n";
+      if(y===10||y===11)sx=nm===PLACEHOLDER?((c==="A"||c==="C")?"b":"g"):(HEAD_GENDER[nm]||"n");
+      return{id:`${y}${c}-${i+1}`,name:nm,av,color,cls:`${y}${c}`,sx};
+    });
+  });
+});
+const ALL={};ALL_YEARS.forEach(y=>CLASSES.forEach(c=>DATA[y][c].forEach(p=>ALL[p.id]=p)));
+/* the combined Head Boy/Girl candidate pool: every Year 10 & 11 student, mixed together */
+function headPoolAll(){
+  const b=[],g=[];
+  HEAD_YEARS.forEach(y=>CLASSES.forEach(c=>DATA[y][c].forEach(p=>{if(p.sx==="b")b.push(p);else if(p.sx==="g")g.push(p)})));
+  return{b,g};
+}
 
 /* =====================================================================
    DEVICE MEMORY  (phone lock is stored in 4 places: localStorage, cookie,
@@ -268,8 +303,8 @@ function isLocked(sc="council"){const k=lk(sc);let a=false;try{a=!!localStorage.
 async function isLockedAny(sc="council"){return isLocked(sc)||!!(await idbGet(lk(sc)))}
 async function lockLocal(sc="council"){const k=lk(sc);lsSet(k,{ts:Date.now()});setCookie(k);await idbSet(k,1)}
 const K_HEAD="ethos_head_v1",K_HVOTES="ethos_hvotes_v1",K_HBAL="ethos_hballots_v1";
-const emptyHead=()=>({round:0,w1:{},w2:{},w3:{}});
-function normHead(h){h=h||{};return {round:+h.round||0,w1:h.w1||{},w2:h.w2||{},w3:h.w3||{}}}
+const emptyHead=()=>({round:0,enabled:true,finalists:{b:[],g:[]},winners:{b:[],g:[]}});
+function normHead(h){h=h||{};return {round:+h.round||0,enabled:h.enabled!==false,finalists:{b:(h.finalists&&h.finalists.b)||[],g:(h.finalists&&h.finalists.g)||[]},winners:{b:(h.winners&&h.winners.b)||[],g:(h.winners&&h.winners.g)||[]}}}
 let HEAD=emptyHead();
 async function headLoad(){
   try{
@@ -280,10 +315,25 @@ async function headLoad(){
 async function myTokens(){const a=[];try{const l=localStorage.getItem(K_TOK);if(l)a.push(l)}catch(e){}const i=await idbGet(K_TOK);if(i&&!a.includes(i))a.push(i);return a}
 async function rememberToken(t){if(!t)return;try{localStorage.setItem(K_TOK,t)}catch(e){}await idbSet(K_TOK,t)}
 
+/* ---------- device info (sent with every vote so it is saved in the Google Sheet) ---------- */
+async function deviceInfo(){
+  const ua=navigator.userAgent||"";let os="Unknown",model="",browser="Unknown";
+  if(/iPhone/.test(ua)){os="iOS "+((ua.match(/OS (\d+[_\d]*)/)||[])[1]||"").replace(/_/g,".");model="iPhone"}
+  else if(/iPad/.test(ua)){os="iPadOS";model="iPad"}
+  else if(/Android/.test(ua)){os="Android "+((ua.match(/Android ([\d.]+)/)||[])[1]||"");const m=ua.match(/Android [\d.]+;\s*([^;)]+?)(?:\sBuild|;|\))/);if(m)model=m[1].trim()}
+  else if(/Windows/.test(ua))os="Windows";else if(/CrOS/.test(ua))os="ChromeOS";else if(/Mac OS X/.test(ua))os="macOS";else if(/Linux/.test(ua))os="Linux";
+  if(/Edg\//.test(ua))browser="Edge";else if(/OPR\//.test(ua))browser="Opera";else if(/SamsungBrowser/.test(ua))browser="Samsung Browser";
+  else if(/FxiOS|Firefox/.test(ua))browser="Firefox";else if(/CriOS|Chrome/.test(ua))browser="Chrome";else if(/Safari/.test(ua))browser="Safari";
+  try{if(navigator.userAgentData&&navigator.userAgentData.getHighEntropyValues){const v=await navigator.userAgentData.getHighEntropyValues(["model"]);if(v&&v.model)model=v.model}}catch(e){}
+  const type=/iPad/.test(ua)||(/Android/.test(ua)&&!/Mobile/.test(ua))?"Tablet":(/Mobi|iPhone/.test(ua)?"Phone":"Computer");
+  let screenTxt="";try{screenTxt=`${screen.width}x${screen.height} (${window.devicePixelRatio||1}x)`}catch(e){}
+  return {type,model,os,browser,screen:screenTxt};
+}
+
 /* ---------- server (api.php) ---------- */
 let serverMode=false;
 async function api(action,body){
-  const ctl=new AbortController();const to=setTimeout(()=>ctl.abort(),25000);
+  const ctl=new AbortController();const to=setTimeout(()=>ctl.abort(),12000);
   try{
     let r;
     if(APPS_SCRIPT_URL){
@@ -359,11 +409,11 @@ function emojiPop(){
       e.style.fontSize=(28+Math.random()*44)+"px";
       e.style.setProperty("--dx",((Math.random()-.5)*160)+"px");e.style.setProperty("--dy",(-(150+Math.random()*320))+"px");
       e.style.setProperty("--rot",((Math.random()-.5)*70)+"deg");e.style.setProperty("--d",(2+Math.random()*1.4)+"s");
-      document.body.appendChild(e);setTimeout(()=>e.remove(),3600);
+      document.body.appendChild(e);setTimeout(()=>e.remove(),1800);
     },i*70);
   }
 }
-function rain(){emojiPop();for(let i=0;i<8;i++)setTimeout(()=>burst(Math.random()*innerWidth,innerHeight*.15,60),i*220);burst(innerWidth/2,innerHeight*.6,140)}
+function rain(){emojiPop();for(let i=0;i<8;i++)setTimeout(()=>burst(Math.random()*innerWidth,innerHeight*.15,60),i*90);burst(innerWidth/2,innerHeight*.6,140)}
 function loop(){
   cx.clearRect(0,0,cv.width,cv.height);parts=parts.filter(p=>p.l>0&&p.y<cv.height+40);
   parts.forEach(p=>{p.x+=p.vx;p.y+=p.vy;p.vy+=p.g;p.vx*=.99;p.r+=p.vr;p.l--;cx.save();cx.translate(p.x,p.y);cx.rotate(p.r);cx.fillStyle=p.c;cx.fillRect(-p.s/2,-p.s/3,p.s,p.s/1.6);cx.restore()});
@@ -383,7 +433,7 @@ function popup({icon="🎉",title="",text="",input=null,buttons=[{label:"OK",cls
     row.appendChild(el);
   });
   document.body.appendChild(ov);
-  const inp=ov.querySelector("#popIn");if(inp){setTimeout(()=>inp.focus(),80);inp.addEventListener("keydown",e=>{if(e.key==="Enter"){const k=buttons.find(b=>b.keep);if(k)k.fn(inp.value,ov)}})}
+  const inp=ov.querySelector("#popIn");if(inp){setTimeout(()=>inp.focus(),20);inp.addEventListener("keydown",e=>{if(e.key==="Enter"){const k=buttons.find(b=>b.keep);if(k)k.fn(inp.value,ov)}})}
   return ov;
 }
 
@@ -402,16 +452,17 @@ function go(fn){navId++;clearInterval(resTimer);document.body.classList.remove("
 
 function screenHome(){
   state.mode=null;state.year=null;state.picks=[];state.cls="A";
-  app.innerHTML=`${hero("Student Council Election 🎊 Pick your 2 favourites!")}
+  app.innerHTML=`${hero("Student Council &amp; Head Boy/Girl Election 🎊")}
   <div class="two">
-    <button class="big phone" id="goPhone"><div class="ic">📱</div><h2>Scan a QR Code</h2><small>Year 7, 8, 9, 10 &amp; 11<br>use your own phone</small></button>
+    <button class="big phone" id="goPhone"><div class="ic">📱</div><h2>Scan a QR Code</h2><small>Year 7, 8 &amp; 9<br>use your own phone</small></button>
     <button class="big pc ${isMobile?"dim":""}" id="goPc"><div class="ic">💻</div><h2>School Computer</h2><small>Year 4, 5 &amp; 6<br>vote on this PC</small></button>
   </div>
+  <p class="center" style="color:#fff;opacity:.9;margin-top:14px">👑 Year 10 &amp; 11? Scan the QR too — pick <b>Head Boy &amp; Head Girl</b> on the next screen.</p>
   ${isMobile?"":`<div class="center" style="margin-top:26px"><button class="btn ghost" id="teacher">🔐 Teacher results</button></div>`}`;
   document.getElementById("goPhone").onclick=()=>{ac();sfx.whoosh();go(screenQR)};
   document.getElementById("goPc").onclick=()=>{
     ac();
-    if(isMobile){sfx.error();popup({icon:"📵",title:"Computer voting only!",text:"This button is for the school computers (Year 6 and below). Phones use the QR code — Year 7 and above only.",buttons:[{label:"Got it",cls:"green"}]});return}
+    if(isMobile){sfx.error();popup({icon:"📵",title:"Computer voting only!",text:"This button is for the school computers (Year 6 and below). Phones use the QR code — Year 7, 8 &amp; 9, or Year 10 &amp; 11 for Head Boy/Girl.",buttons:[{label:"Got it",cls:"green"}]});return}
     sfx.whoosh();state.mode="pc";go(screenElection);
   };
   const t=document.getElementById("teacher");if(t)t.onclick=()=>{ac();sfx.click();askPassword()};
@@ -424,7 +475,7 @@ function screenQR(){
   const url=baseUrl();
   app.innerHTML=`${hero("Scan with your phone camera 📸")}
   <div class="card qrbox">
-    <h2 style="margin:0;text-align:center">📱 Year 7 &amp; above — vote on your phone!</h2>
+    <h2 style="margin:0;text-align:center">📱 Year 7, 8 &amp; 9 — vote on your phone!</h2>
     <div id="qr"></div>
     <div class="link">${url}</div>
     <p class="center" style="margin:0">Point your camera at the code. You get <b>ONE vote per phone</b> in each election — no take-backs! 🔒</p>
@@ -447,9 +498,10 @@ function screenYears(){
   app.querySelectorAll(".ybtn").forEach(b=>b.onclick=()=>{sfx.pick();state.year=+b.dataset.y;state.cls="A";state.picks=[];go(screenVote)});
   const bk=document.getElementById("back");if(bk)bk.onclick=()=>{sfx.click();go(screenElection)};
 }
+function picksRequired(){return Math.min(2,(DATA[state.year][state.cls]||[]).length||1)}
 function screenVote(){
   document.body.classList.add("voting");
-  app.innerHTML=`${hero(`Year ${state.year} 🌟 Choose exactly <b>${PICKS_REQUIRED}</b> candidates`)}<div class="tabs" id="tabs"></div><div class="cands" id="cands"></div><div class="bar" id="bar"></div>`;
+  app.innerHTML=`${hero(`Year ${state.year} 🌟 Choose your favourite${picksRequired()>1?"s":""}`)}<div class="tabs" id="tabs"></div><div class="cands" id="cands"></div><div class="bar" id="bar"></div>`;
   drawTabs();drawCands();drawBar();
 }
 function drawTabs(){
@@ -459,25 +511,26 @@ function drawTabs(){
 }
 function drawCands(){
   const box=document.getElementById("cands");
-  box.innerHTML=DATA[state.year][state.cls].map((p,i)=>`<button class="cand ${state.picks.includes(p.id)?"sel":""}" data-id="${p.id}" style="animation-delay:${i*60}ms"><div class="ck">✔</div><div class="av" style="background:${p.color}">${p.av}</div><div class="nm">${p.name}</div><div class="cl">Class ${p.cls}</div></button>`).join("");
+  box.innerHTML=DATA[state.year][state.cls].map((p,i)=>`<button class="cand ${state.picks.includes(p.id)?"sel":""}" data-id="${p.id}" style="animation-delay:${i*22}ms"><div class="ck">✔</div><div class="av" style="background:${p.color}">${p.av}</div><div class="nm">${p.name}</div><div class="cl">Class ${p.cls}</div></button>`).join("");
   box.querySelectorAll(".cand").forEach(b=>b.onclick=()=>togglePick(b.dataset.id,b));
 }
 function togglePick(id,el){
-  ac();const i=state.picks.indexOf(id);
+  ac();const need=picksRequired(),i=state.picks.indexOf(id);
   if(i>=0){state.picks.splice(i,1);sfx.unpick()}
   else{
-    if(state.picks.length>=PICKS_REQUIRED){sfx.error();el.classList.add("shake");setTimeout(()=>el.classList.remove("shake"),450);popup({icon:"✋",title:"Only 2 votes!",text:"You already picked 2 candidates. Tap one of your chosen stars again to un-pick it first.",buttons:[{label:"OK!",cls:"green"}]});return}
+    if(state.picks.length>=need){sfx.error();el.classList.add("shake");setTimeout(()=>el.classList.remove("shake"),450);popup({icon:"✋",title:need===1?"Only 1 vote here!":"Only 2 votes!",text:need===1?"This class only has 1 candidate to pick. Tap your chosen star again to un-pick it first.":"You already picked 2 candidates. Tap one of your chosen stars again to un-pick it first.",buttons:[{label:"OK!",cls:"green"}]});return}
     state.picks.push(id);sfx.pick();const r=el.getBoundingClientRect();burst(r.left+r.width/2,r.top+30,22);
   }
   el.classList.toggle("sel",state.picks.includes(id));drawTabs();drawBar();
 }
 function drawBar(){
-  const bar=document.getElementById("bar"),ready=state.picks.length===PICKS_REQUIRED;
-  bar.innerHTML=`<div class="chips">${Array.from({length:PICKS_REQUIRED},(_,i)=>`<span class="dot ${i<state.picks.length?"full":""}"></span>`).join("")}${state.picks.map(id=>`<span class="chip">${ALL[id].av} ${ALL[id].name}</span>`).join("")}</div><button class="btn green" id="submit" ${ready?"":"disabled"}>🗳️ Cast my ${PICKS_REQUIRED} votes!</button>`;
+  const bar=document.getElementById("bar"),need=picksRequired(),ready=state.picks.length===need;
+  bar.innerHTML=`<div class="chips">${Array.from({length:need},(_,i)=>`<span class="dot ${i<state.picks.length?"full":""}"></span>`).join("")}${state.picks.map(id=>`<span class="chip">${ALL[id].av} ${ALL[id].name}</span>`).join("")}</div><button class="btn green" id="submit" ${ready?"":"disabled"}>🗳️ Cast my ${need>1?need+" votes":"vote"}!</button>`;
   document.getElementById("submit").onclick=confirmVote;
 }
 function confirmVote(){
-  if(state.picks.length!==PICKS_REQUIRED){sfx.error();popup({icon:"🤔",title:"Pick 2 first!",text:`You need exactly ${PICKS_REQUIRED} candidates. You picked ${state.picks.length}.`,buttons:[{label:"OK",cls:"green"}]});return}
+  const need=picksRequired();
+  if(state.picks.length!==need){sfx.error();popup({icon:"🤔",title:"Pick first!",text:`You need exactly ${need} candidate${need>1?"s":""}. You picked ${state.picks.length}.`,buttons:[{label:"OK",cls:"green"}]});return}
   const names=state.picks.map(id=>`${ALL[id].av} <b>${ALL[id].name}</b> (${ALL[id].cls})`).join("<br>");
   const warn=state.mode==="phone"?"<br><br>⚠️ <b>This phone can vote only ONCE. It cannot be undone!</b>":"";
   sfx.boing();
@@ -491,7 +544,7 @@ async function submitVote(){
   if(serverMode){
     const wait=popup({icon:"⏳",title:"Sending your vote…",text:"Just a second!",buttons:[]});
     try{
-      const j=await api("vote",{mode:state.mode,year:state.year,picks:picked,tokens:await myTokens()});
+      const j=await api("vote",{mode:state.mode,year:state.year,picks:picked,tokens:await myTokens(),dev:await deviceInfo()});
       wait.remove();
       if(j.token)await rememberToken(j.token);
       if(!j.ok){
@@ -513,7 +566,7 @@ function screenNext(){
   <div class="row"><button class="btn green" id="next" style="font-size:1.5rem;padding:18px 34px">➡️ Next voter</button><button class="btn ghost" id="other" style="color:var(--ink);border-color:var(--ink-soft)">🗳️ Other election</button></div></div>`;
   document.getElementById("next").onclick=async()=>{
     ac();sfx.whoosh();state.picks=[];state.cls="A";state.mode="pc";
-    if(state.el==="head"){await headLoad();if(HEAD.round<1||HEAD.round>3){go(screenElection);return}go(screenHeadYears)}
+    if(state.el==="head"){await headLoad();if(HEAD.round===3){state.hround=3;go(screenHeadVote)}else{go(screenElection)}}
     else go(screenYears);
   };
   document.getElementById("other").onclick=()=>{ac();sfx.click();state.mode="pc";go(screenElection)};
@@ -532,12 +585,12 @@ function screenLocked(sc="council"){
 /* =====================================================================
    ELECTION PICKER  (Student Council  /  Head Boy & Head Girl)
    ===================================================================== */
-const STEPS=[["🏫","Level 1","Class"],["📚","Level 2","Year group"],["🌍","Level 3","Key stage"],["👑","Winners","Head Boy & Girl"]];
+const STEPS=[["🙋","Level 1","Year Group"],["🎤","Level 2","Interview"],["🗳️","Level 3","Students Vote"],["👑","Winners","Head Boy & Girl"]];
 function headStepper(r,inCard){return `<div class="stepper ${inCard?"in":""}">${STEPS.map((x,i)=>`<div class="stp ${i+1<r?"done":i+1===r?"now":""}"><span>${i+1<r?"✅":x[0]}</span><b>${x[1]}</b><small>${x[2]}</small></div>`).join("")}</div>`}
 const LEVEL_TXT={
-  1:"Level 1 — vote inside your own CLASS. Pick 1 Head Boy and 1 Head Girl from your class. The winner of each class moves up!",
-  2:"Level 2 — the class winners of your YEAR GROUP compete. Pick 1 Head Boy and 1 Head Girl. The year winner moves up!",
-  3:"Level 3 — the year winners of your KEY STAGE compete. Pick 1 Head Boy and 1 Head Girl — the champions! 👑"
+  1:"Level 1 — Year Group nomination. Every Year 10 &amp; Year 11 student picks 1 Head Boy nominee and 1 Head Girl nominee from the whole year group, all mixed together!",
+  2:"Level 2 — Interview. The teacher meets the top nominees face-to-face, then chooses who goes through to the final vote. Nobody votes during this stage.",
+  3:"Level 3 — Students Vote! The WHOLE SCHOOL votes for their favourite Head Boy and Head Girl among the interview finalists."
 };
 async function screenElection(){
   const my=navId;state.el=null;state.picks=[];state.hb=null;state.hg=null;
@@ -545,14 +598,14 @@ async function screenElection(){
   await headLoad();
   const phone=state.mode==="phone";
   const cLocked=phone&&await isLockedAny("council");
-  const r=HEAD.round,hOpen=r>=1&&r<=3;
-  const hLocked=phone&&hOpen&&await isLockedAny("head"+r);
+  const r=HEAD.round,hOpen=(r===1||r===3),hOff=HEAD.enabled===false;
+  const hLocked=phone&&hOpen&&!hOff&&await isLockedAny("head"+r);
   if(my!==navId)return;
-  const hSmall=r===0?"Not open yet ⏳":r===4?"Finished 🎉 winners announced!":hLocked?`✅ This phone already voted in Level ${r}`:`Level ${r} is OPEN 🟢<br>${["","Class round","Year-group round","Key-stage round"][r]}`;
+  const hSmall=hOff?"🔌 Turned off by the teacher":r===0?"Not open yet ⏳":r===2?"🎤 Interview in progress":r===4?"Finished 🎉 winners announced!":hLocked?`✅ This phone already voted in Level ${r}`:r===1?"Level 1 OPEN 🟢<br>Year 10 &amp; 11 nominations":"Level 3 OPEN 🟢<br>Whole-school final vote";
   app.innerHTML=`${hero("What would you like to vote in? 🗳️")}
   <div class="two">
-    <button class="big phone ${cLocked?"dim":""}" id="elC"><div class="ic">🗳️</div><h2>Student Council</h2><small>${cLocked?"✅ This phone already voted":"Pick your 2 favourites"}</small></button>
-    <button class="big head ${!hOpen||hLocked?"dim":""}" id="elH"><div class="ic">👑</div><h2>Head Boy &amp; Head Girl</h2><small>${hSmall}</small></button>
+    <button class="big phone ${cLocked?"dim":""}" id="elC"><div class="ic">🗳️</div><h2>Student Council</h2><small>${cLocked?"✅ This phone already voted":"Pick your favourites (Years 4-9)"}</small></button>
+    <button class="big head ${hOff||!hOpen||hLocked?"dim":""}" id="elH"><div class="ic">👑</div><h2>Head Boy &amp; Head Girl</h2><small>${hSmall}</small></button>
   </div>
   ${headStepper(r,false)}
   ${phone?"":`<div class="center" style="margin-top:22px"><button class="btn ghost" id="back">⬅ Back</button></div>`}`;
@@ -563,62 +616,87 @@ async function screenElection(){
   };
   document.getElementById("elH").onclick=async()=>{
     ac();
-    if(!hOpen){sfx.error();popup({icon:r===4?"🎉":"⏳",title:r===4?"Head election is finished!":"Not open yet",text:r===4?"The Head Boy and Head Girl winners have been chosen. Thank you for voting!":"The Head Boy &amp; Head Girl voting has not started. Ask your teacher when Level 1 opens.",buttons:[{label:"OK",cls:"green"}]});return}
-    if(phone&&!(await phoneAllowed("head"+r))){sfx.error();go(()=>screenLocked("head"+r));return}
-    sfx.whoosh();state.el="head";go(screenHeadYears);
+    if(hOff){sfx.error();popup({icon:"🔌",title:"Head Boy & Girl voting is off",text:"Your teacher has turned this election off for now. Ask them when it will reopen.",buttons:[{label:"OK",cls:"green"}]});return}
+    sfx.whoosh();state.el="head";go(screenHeadLevels);
   };
   const bk=document.getElementById("back");if(bk)bk.onclick=()=>{sfx.click();go(screenHome)};
 }
 
-/* =====================================================================
-   HEAD BOY / HEAD GIRL – voter screens
-   ===================================================================== */
-const YCOLS=["linear-gradient(135deg,#ff4fa3,#ff7b2f)","linear-gradient(135deg,#3a86ff,#19d3c5)","linear-gradient(135deg,#8338ec,#ff4fa3)","linear-gradient(135deg,#2fd66b,#19d3c5)"];
-function screenHeadYears(){
-  const list=state.mode==="phone"?PHONE_YEARS:PC_YEARS,r=HEAD.round;
-  app.innerHTML=`${hero(`👑 Head Boy &amp; Head Girl — Level ${r}`)}
+/* level-overview screen: shown as soon as "Head Boy & Head Girl" is pressed */
+function screenHeadLevels(){
+  const r=HEAD.round,phone=state.mode==="phone",hOpen=(r===1||r===3);
+  const desc={1:"Year 10 &amp; 11 nominate a Head Boy + Head Girl (mixed together)",2:"Teacher interviews the top nominees",3:"The WHOLE SCHOOL votes for the finalists"};
+  const rows=[1,2,3].map(n=>{
+    const st=n<r?"done":n===r?"now":"todo",icon=st==="done"?"✅":st==="now"?"🟢":"⏳";
+    return `<div class="hlvl ${st}"><div class="hlvl-ic">${icon}</div><div><b>Level ${n} — ${STEPS[n-1][2]}</b><br><small>${desc[n]}</small></div></div>`;
+  }).join("");
+  const winRow=`<div class="hlvl ${r===4?"done":"todo"}"><div class="hlvl-ic">${r===4?"👑":"⏳"}</div><div><b>Winners</b><br><small>${r===4?"Head Boy & Head Girl have been decided!":"Announced once Level 3 closes"}</small></div></div>`;
+  const goLabel=r===1?"🙋 Continue to nominate":r===3?"🗳️ Continue to vote":r===4?"🎉 Finished":r===2?"🎤 Interview in progress":"⏳ Not open yet";
+  app.innerHTML=`${hero("👑 Head Boy &amp; Head Girl")}
   <div class="card">
-    <h2 class="center" style="margin-top:0">Which year are you in? 🎒</h2>
-    <div class="note">${LEVEL_TXT[r]||""}</div>
-    <div class="yeargrid">${list.map((y,i)=>`<button class="ybtn ${r===3&&groupOf(y).years.length===1?"dim":""}" data-y="${y}" style="background:${YCOLS[i%YCOLS.length]}">Year<b>${y}</b>🎓</button>`).join("")}</div>
-    <div class="center" style="margin-top:20px"><button class="btn" id="back" style="background:#8a7fc9">⬅ Back</button></div>
+    ${headStepper(r,true)}
+    <div class="hlvls">${rows}${winRow}</div>
+    <div class="row" style="margin-top:20px">
+      <button class="btn" id="back" style="background:#8a7fc9">⬅ Back</button>
+      <button class="btn ${hOpen?"green":"ghost"}" id="go2" style="${hOpen?"":"color:var(--ink);border-color:var(--ink-soft)"}">${goLabel}</button>
+    </div>
   </div>`;
-  app.querySelectorAll(".ybtn").forEach(b=>b.onclick=()=>{
-    const y=+b.dataset.y;
-    if(r===3&&groupOf(y).years.length===1){sfx.error();popup({icon:"🎉",title:`Year ${y} is already crowned!`,text:`Year ${y} is a key stage on its own, so its Head Boy &amp; Head Girl were decided at Level 2. No Level 3 vote for you!`,buttons:[{label:"OK",cls:"green"}]});return}
-    sfx.pick();state.year=y;state.hround=r;state.hb=null;state.hg=null;state.hc=null;
-    go(r===1?screenHeadClass:screenHeadVote);
-  });
   document.getElementById("back").onclick=()=>{sfx.click();go(screenElection)};
+  document.getElementById("go2").onclick=async()=>{
+    ac();
+    if(!hOpen){
+      sfx.error();
+      const msg=r===2?{icon:"🎤",title:"Interview in progress",text:"The teacher is meeting the nominees right now. Student voting reopens for Level 3 once interviews are done."}
+        :r===4?{icon:"🎉",title:"Head election is finished!",text:"The Head Boy and Head Girl winners have been chosen. Thank you for voting!"}
+        :{icon:"⏳",title:"Not open yet",text:"Head Boy &amp; Head Girl voting has not started. Ask your teacher when Level 1 opens."};
+      popup({...msg,buttons:[{label:"OK",cls:"green"}]});return;
+    }
+    if(r===1){go(screenHeadWho);return}
+    // round 3 — final vote, open to the whole school, no year gate needed
+    if(phone&&!(await phoneAllowed("head3"))){sfx.error();go(()=>screenLocked("head3"));return}
+    sfx.whoosh();state.hround=3;go(screenHeadVote);
+  };
 }
-function screenHeadClass(){
-  app.innerHTML=`${hero(`👑 Level 1 — Year ${state.year}`)}
-  <div class="card"><h2 class="center" style="margin-top:0">Which class are you in? 🏫</h2>
-  <div class="yeargrid">${CLASSES.map((c,i)=>`<button class="ybtn" data-c="${c}" style="background:${YCOLS[i%YCOLS.length]}">Class<b>${state.year}${c}</b>🏫</button>`).join("")}</div>
-  <div class="center" style="margin-top:20px"><button class="btn" id="back" style="background:#8a7fc9">⬅ Back</button></div></div>`;
-  app.querySelectorAll(".ybtn").forEach(b=>b.onclick=()=>{sfx.pick();state.hc=b.dataset.c;go(screenHeadVote)});
-  document.getElementById("back").onclick=()=>{sfx.click();go(screenHeadYears)};
+
+/* Level 1 eligibility gate: nominations are Year 10 & 11 only */
+function screenHeadWho(){
+  app.innerHTML=`${hero("👑 Level 1 — Year Group Nomination")}
+  <div class="card">
+    <h2 class="center" style="margin-top:0">Are you in Year 10 or Year 11? 🎒</h2>
+    <div class="note">${LEVEL_TXT[1]}</div>
+    <div class="yeargrid">
+      <button class="ybtn" data-y="10" style="background:linear-gradient(135deg,#ff4fa3,#ff7b2f)">Year<b>10</b>🎓</button>
+      <button class="ybtn" data-y="11" style="background:linear-gradient(135deg,#3a86ff,#19d3c5)">Year<b>11</b>🎓</button>
+    </div>
+    <div class="center" style="margin-top:14px"><button class="btn ghost" id="other" style="color:#fff;border-color:rgba(255,255,255,.7)">I'm in a different year</button></div>
+    <div class="center" style="margin-top:14px"><button class="btn" id="back" style="background:#8a7fc9">⬅ Back</button></div>
+  </div>`;
+  app.querySelectorAll(".ybtn").forEach(b=>b.onclick=async()=>{
+    ac();
+    if(state.mode!=="phone"){sfx.error();popup({icon:"📱",title:"Use your phone",text:"Year 10 &amp; 11 nominate using their own phone (scan the QR code), not the school computer.",buttons:[{label:"OK",cls:"green"}]});return}
+    if(!(await phoneAllowed("head1"))){sfx.error();go(()=>screenLocked("head1"));return}
+    sfx.pick();state.year=+b.dataset.y;state.hround=1;go(screenHeadVote);
+  });
+  document.getElementById("other").onclick=()=>{ac();sfx.error();popup({icon:"🙅",title:"Only Year 10 & 11",text:"Level 1 nominations are only for Year 10 &amp; Year 11 students. Everyone will get to vote for the finalists at Level 3!",buttons:[{label:"OK",cls:"green"}]})};
+  document.getElementById("back").onclick=()=>{sfx.click();go(screenHeadLevels)};
 }
-function headPool(){
-  const y=state.year,r=state.hround,b=[],g=[];let label="";
-  const add=w=>{if(w){w.b.forEach(i=>ALL[i]&&b.push(ALL[i]));w.g.forEach(i=>ALL[i]&&g.push(ALL[i]))}};
-  if(r===1){const arr=DATA[y][state.hc];arr.forEach(p=>(p.sx==="b"?b:g).push(p));label=`Class ${y}${state.hc}`}
-  else if(r===2){CLASSES.forEach(L=>add(HEAD.w1[`${y}${L}`]));label=`Year ${y} finalists`}
-  else{const G=groupOf(y);G.years.forEach(yy=>add(HEAD.w2[yy]));label=`${G.label} finalists`}
-  return{b,g,label};
+function headVotePool(){
+  if(state.hround===1)return{...headPoolAll(),label:"Level 1 · Year 10 &amp; 11 nominees (mixed)"};
+  const f=HEAD.finalists||{b:[],g:[]};
+  return{b:f.b.map(id=>ALL[id]).filter(Boolean),g:f.g.map(id=>ALL[id]).filter(Boolean),label:"Level 3 · Final vote"};
 }
 function screenHeadVote(){
   document.body.classList.add("voting");
-  const pool=state.pool=headPool();
-  if(!pool.b.length||!pool.g.length){popup({icon:"🤔",title:"No finalists found",text:"Ask your teacher to check the Head election.",buttons:[{label:"OK",cls:"green"}]});go(screenElection);return}
-  app.innerHTML=`${hero(`👑 Level ${state.hround} · ${pool.label}`)}
+  const pool=state.pool=headVotePool();
+  if(!pool.b.length||!pool.g.length){popup({icon:"🤔",title:"No candidates yet",text:"Ask your teacher to check the Head election.",buttons:[{label:"OK",cls:"green"}]});go(screenElection);return}
+  app.innerHTML=`${hero(`👑 ${pool.label}`)}
   <h2 class="sec">👦 Choose <b>1</b> Head Boy</h2><div class="cands" id="cb"></div>
   <h2 class="sec">👧 Choose <b>1</b> Head Girl</h2><div class="cands" id="cg"></div><div class="bar" id="bar"></div>`;
   drawHead();
 }
 function drawHead(){
   const pool=state.pool;
-  const card=(p,i,sel)=>`<button class="cand ${sel?"sel":""}" data-id="${p.id}" data-sx="${p.sx}" style="animation-delay:${i*60}ms"><div class="ck">✔</div><div class="av" style="background:${p.color}">${p.av}</div><div class="nm">${p.name}</div><div class="cl">Class ${p.cls}</div></button>`;
+  const card=(p,i,sel)=>`<button class="cand ${sel?"sel":""}" data-id="${p.id}" data-sx="${p.sx}" style="animation-delay:${i*22}ms"><div class="ck">✔</div><div class="av" style="background:${p.color}">${p.av}</div><div class="nm">${p.name}</div><div class="cl">Class ${p.cls}</div></button>`;
   document.getElementById("cb").innerHTML=pool.b.map((p,i)=>card(p,i,state.hb===p.id)).join("");
   document.getElementById("cg").innerHTML=pool.g.map((p,i)=>card(p,i,state.hg===p.id)).join("");
   app.querySelectorAll(".cand").forEach(el=>el.onclick=()=>{
@@ -640,17 +718,18 @@ function confirmHead(){
 }
 async function submitHead(){
   if(submitting)return;submitting=true;
-  const round=state.hround,scope="head"+round,boy=state.hb,girl=state.hg;
+  const round=state.hround,scope="head"+round,boy=state.hb,girl=state.hg,year=state.year||0;
   if(state.mode==="phone"&&(await isLockedAny(scope))){submitting=false;go(()=>screenLocked(scope));return}
   if(serverMode){
     const wait=popup({icon:"⏳",title:"Sending your vote…",text:"Just a second!",buttons:[]});
     try{
-      const j=await api("head_vote",{mode:state.mode,year:state.year,round,boy,girl,tokens:await myTokens()});
+      const j=await api("head_vote",{mode:state.mode,year,round,boy,girl,tokens:await myTokens(),dev:await deviceInfo()});
       wait.remove();
       if(j.token)await rememberToken(j.token);
       if(!j.ok){
         if(j.locked){await lockLocal(scope);submitting=false;go(()=>screenLocked(scope));return}
-        if(j.error==="round"){submitting=false;sfx.error();await headLoad();popup({icon:"🔄",title:"This level just changed",text:"The teacher moved the election on to the next level while you were voting. Your vote was NOT counted — please start again.",buttons:[{label:"OK",cls:"green",fn:()=>go(screenElection)}]});return}
+        if(j.error==="round"){submitting=false;sfx.error();await headLoad();popup({icon:"🔄",title:"This level just changed",text:"The teacher moved the election on while you were voting. Your vote was NOT counted — please start again.",buttons:[{label:"OK",cls:"green",fn:()=>go(screenElection)}]});return}
+        if(j.error==="disabled"){submitting=false;sfx.error();await headLoad();popup({icon:"🔌",title:"Turned off",text:"Your teacher turned Head Boy &amp; Girl voting off just now. Your vote was NOT counted.",buttons:[{label:"OK",cls:"green",fn:()=>go(screenElection)}]});return}
         throw new Error(j.error||"vote failed");
       }
     }catch(e){wait.remove();submitting=false;sfx.error();popup({icon:"📡",title:"Oops! Not sent",text:"Your vote did not reach the server. Check the internet and tap the vote button again.",buttons:[{label:"OK",cls:"green"}]});return}
@@ -723,112 +802,132 @@ function arenaHTML(title,boys,girls,cnt,adv){
   };
   return `<div class="rcls"><h3>${title}</h3>${col("👦 Head Boy",boys)}${col("👧 Head Girl",girls)}</div>`;
 }
-const advSet=w=>w?new Set([...w.b,...w.g]):null;
-function champNames(G,sx,cnt){
-  const w=HEAD.w3[G.id];if(!w)return null;
-  const c=(cnt||{})[G.years.length===1?2:3]||{};
-  return w[sx].map(id=>({p:ALL[id],n:c[id]||0}));
-}
-function winnersHTML(cnt,canCrown){
-  return `<div class="rgrid">${GROUPS.map(G=>{
-    const one=sx=>{const list=champNames(G,sx,cnt);
-      if(!list)return `<div class="wrow"><small>⏳ not decided yet</small></div>`;
-      const tie=list.length>1;
-      return `<div class="wrow">${tie?`<span class="tie">🤝 TIE</span>`:""}${list.map(x=>`<span class="wrow"><span class="av2" style="background:${x.p.color}">${x.p.av}</span><span><b>${x.p.name}</b><br><small>${x.p.cls} · ${x.n} votes</small></span>${tie&&canCrown?`<button class="btn green crown" data-g="${G.id}" data-sx="${sx}" data-id="${x.p.id}">👑 Crown</button>`:""}</span>`).join("")}</div>`};
-    return `<div class="wcard"><h3>${G.label}</h3><h4 style="margin:4px 0">👦 Head Boy</h4>${one("b")}<h4 style="margin:4px 0">👧 Head Girl</h4>${one("g")}</div>`;
-  }).join("")}</div>`;
+/* ---------------- winners board (Head Boy + Head Girl, whole school) ---------------- */
+function winnersHTML(canCrown){
+  const w=HEAD.winners||{b:[],g:[]};
+  const one=sx=>{
+    const ids=w[sx]||[];
+    if(!ids.length)return `<div class="wrow"><small>⏳ not decided yet</small></div>`;
+    const tie=ids.length>1;
+    return `<div class="wrow">${tie?`<span class="tie">🤝 TIE</span>`:""}${ids.map(id=>{const p=ALL[id];return `<span class="wrow"><span class="av2" style="background:${p.color}">${p.av}</span><span><b>${p.name}</b><br><small>${p.cls}</small></span>${tie&&canCrown?`<button class="btn green crown" data-sx="${sx}" data-id="${id}">👑 Crown</button>`:""}</span>`}).join("")}</div>`;
+  };
+  return `<div class="wcard" style="max-width:560px;margin:0 auto"><h3>👦 Head Boy</h3>${one("b")}<h3 style="margin-top:16px">👧 Head Girl</h3>${one("g")}</div>`;
 }
 function paintHead(){
   const d=lastHead,el=document.getElementById("headPane");if(!d||!el)return;
   const r=HEAD.round,counts=d.counts||{},bal=d.ballots||{},cur=(bal[r]&&bal[r].total)||0;
   const cnt=lvl=>counts[lvl]||{};
+  const pool=headPoolAll();
   let ctl="";
-  if(r===0)ctl=`<button class="btn green" id="hStart">▶ Start Level 1 (classes)</button>`;
-  else if(r<=3)ctl=`<button class="btn green" id="hNext">${r===3?"✅ Close Level 3 &amp; crown the winners 👑":`✅ Close Level ${r} &amp; open Level ${r+1}`}</button><button class="btn ghost noundo" id="hUndo" style="color:var(--ink);border-color:var(--ink-soft)">↩ Undo</button>`;
+  if(r===0)ctl=`<button class="btn green" id="hStart">▶ Start Level 1 (Year Group nomination)</button>`;
+  else if(r===1)ctl=`<button class="btn green" id="hNext">✅ Close nominations &amp; start Interview 🎤</button><button class="btn ghost noundo" id="hUndo" style="color:var(--ink);border-color:var(--ink-soft)">↩ Undo</button>`;
+  else if(r===2)ctl=`<button class="btn green" id="hOpenVote" ${(HEAD.finalists.b.length&&HEAD.finalists.g.length)?"":"disabled"}>🗳️ Open student voting (Level 3)</button><button class="btn ghost noundo" id="hUndo" style="color:var(--ink);border-color:var(--ink-soft)">↩ Undo</button>`;
+  else if(r===3)ctl=`<button class="btn green" id="hNext">✅ Close voting &amp; crown the winners 👑</button><button class="btn ghost noundo" id="hUndo" style="color:var(--ink);border-color:var(--ink-soft)">↩ Undo</button>`;
   else ctl=`<button class="btn green" id="hReveal">🎬 Reveal the winners!</button><button class="btn" id="hPrint">🖨 Print winners</button><button class="btn ghost" id="hUndo" style="color:var(--ink);border-color:var(--ink-soft)">↩ Reopen Level 3</button>`;
-  const status=r===0?"Head election has not started.":r===4?"🏁 Finished — the winners are decided!":`🟢 Level ${r} is OPEN — <b>${cur}</b> ballots so far`;
-  const lv=[["1","🏫 Level 1 · Classes"],["2","📚 Level 2 · Years"],["3","🌍 Level 3 · Key stages"],["4","👑 Winners"]];
-  const tabs=lv.map(([k,t])=>`<button class="tab ${+k===hLevel?"on":""}" data-l="${k}">${t}${+k<=3&&bal[k]&&bal[k].total?`<i>${bal[k].total}</i>`:""}</button>`).join("");
+  const off=HEAD.enabled===false;
+  const status=off?"🔌 Turned OFF — students cannot vote in it right now.":r===0?"Head election has not started.":r===2?"🎤 Interview stage — choose which nominees pass below.":r===4?"🏁 Finished — the winners are decided!":`🟢 Level ${r} is OPEN — <b>${cur}</b> ballots so far`;
+  const offBtn=`<button class="btn ${off?"green":"red"}" id="hToggle">${off?"▶️ Turn Head election back ON":"🔌 Turn Head election OFF"}</button>`;
+  const lv=[["1","🙋 Level 1 · Nominate"],["2","🎤 Level 2 · Interview"],["3","🗳️ Level 3 · Vote"],["4","👑 Winners"]];
+  const tabs=lv.map(([k,t])=>`<button class="tab ${+k===hLevel?"on":""}" data-l="${k}">${t}${+k!==2&&bal[k]&&bal[k].total?`<i>${bal[k].total}</i>`:""}</button>`).join("");
   let body="";
   if(hLevel===1){
-    const ytabs=`<div class="tabs">${YEARS.map(y=>`<button class="tab ${y===hYear?"on":""}" data-hy="${y}">Year ${y}</button>`).join("")}</div>`;
-    body=ytabs+`<div class="rgrid">${CLASSES.map(L=>{const arr=DATA[hYear][L],w=r>1?HEAD.w1[`${hYear}${L}`]:null;return arenaHTML(`Class ${hYear}${L}`,idsOf(arr,"b"),idsOf(arr,"g"),cnt(1),advSet(w))}).join("")}</div>`;
+    body=arenaHTML("Year 10 &amp; 11 — all nominees, mixed",idsOf([...pool.b],"b"),idsOf([...pool.g],"g"),cnt(1),r>1?new Set([...HEAD.finalists.b,...HEAD.finalists.g]):null);
   }else if(hLevel===2){
-    body=r<2?`<div class="note">Level 2 starts after Level 1 is closed 🔒</div>`:`<div class="rgrid">${YEARS.map(y=>{
-      const bs=[],gs=[];CLASSES.forEach(L=>{const w=HEAD.w1[`${y}${L}`];if(w){bs.push(...w.b);gs.push(...w.g)}});
-      return arenaHTML(`Year ${y}`,bs,gs,cnt(2),r>2?advSet(HEAD.w2[y]):null)}).join("")}</div>`;
+    if(r<2){body=`<div class="note">Interview picks open once Level 1 (nominations) closes 🔒</div>`;}
+    else{
+      const c1=cnt(1);
+      const row=(p)=>{const chosen=HEAD.finalists[p.sx].includes(p.id);
+        return `<div class="rr"><span>${p.av} ${p.name} <small>${p.cls}</small></span><div><div class="meter" style="width:${Math.min(100,(c1[p.id]||0)*8)}%"></div></div><b>${c1[p.id]||0}</b><button class="btn ${chosen?"green":"ghost"} interview" style="padding:4px 10px;font-size:.85rem;margin-left:6px;${chosen?"":"color:var(--ink);border-color:var(--ink-soft)"}" data-sx="${p.sx}" data-id="${p.id}">${chosen?"✅ Passed":"Mark as finalist"}</button></div>`};
+      const sorted=(sx)=>pool[sx].slice().sort((a,z)=>(c1[z.id]||0)-(c1[a.id]||0));
+      body=`<div class="note">Tap "Mark as finalist" for whoever passed their interview — at least 1 boy &amp; 1 girl needed to open Level 3.</div>
+      <div class="rgrid"><div class="rcls"><h3>👦 Boy nominees (sorted by nomination votes)</h3>${sorted("b").map(row).join("")}</div><div class="rcls"><h3>👧 Girl nominees (sorted by nomination votes)</h3>${sorted("g").map(row).join("")}</div></div>`;
+    }
   }else if(hLevel===3){
-    body=r<3?`<div class="note">Level 3 starts after Level 2 is closed 🔒 (Year 10 &amp; Year 11 are alone, so they are crowned at Level 2.)</div>`:`<div class="rgrid">${GROUPS.filter(G=>G.years.length>1).map(G=>{
-      const bs=[],gs=[];G.years.forEach(y=>{const w=HEAD.w2[y];if(w){bs.push(...w.b);gs.push(...w.g)}});
-      return arenaHTML(G.label,bs,gs,cnt(3),r>3?advSet(HEAD.w3[G.id]):null)}).join("")}</div>`;
+    body=r<3?`<div class="note">Level 3 opens once the interview finalists are chosen 🔒</div>`:arenaHTML("Final vote — interview finalists",HEAD.finalists.b,HEAD.finalists.g,cnt(3),r>3?new Set([...HEAD.winners.b,...HEAD.winners.g]):null);
   }else{
-    body=(r>=3?winnersHTML(counts,r===4):`<div class="note">Winners appear here as each key stage is decided.</div>`)+(r===4?`<div class="note">If two students tie, press <b>👑 Crown</b> next to the one who should win.</div>`:"");
+    body=(r>=4?winnersHTML(true):`<div class="note">Winners appear here once Level 3 closes.</div>`)+(r===4?`<div class="note">If two students tie, press <b>👑 Crown</b> next to the one who should win.</div>`:"");
   }
   el.innerHTML=`<div class="live ${serverMode?"on":"off"}">${serverMode?"🟢 LIVE — all phones &amp; computers combined":"🟠 Demo mode — only votes saved on THIS device are shown"}</div>
   ${headStepper(r,true)}
   <div class="note" style="margin-top:14px">${status}</div>
-  <div class="row" style="margin:8px 0 14px">${ctl}</div>
+  <div class="row" style="margin:8px 0 14px">${ctl}${offBtn}</div>
   <div class="tabs" id="hTabs">${tabs}</div>${body}`;
   el.querySelectorAll("#hTabs .tab").forEach(t=>t.onclick=()=>{sfx.click();hLevel=+t.dataset.l;paintHead()});
-  el.querySelectorAll("[data-hy]").forEach(t=>t.onclick=()=>{sfx.click();hYear=+t.dataset.hy;paintHead()});
+  el.querySelectorAll(".interview").forEach(bt=>bt.onclick=async()=>{
+    sfx.click();const h=clone(HEAD),sx=bt.dataset.sx,id=bt.dataset.id,arr=h.finalists[sx];
+    const i=arr.indexOf(id);if(i>=0)arr.splice(i,1);else arr.push(id);
+    try{await headSave(h);lastSig="";await refreshNow()}catch(e){sfx.error()}
+  });
   el.querySelectorAll(".crown").forEach(bt=>bt.onclick=async()=>{
-    const h=clone(HEAD);h.w3[bt.dataset.g][bt.dataset.sx]=[bt.dataset.id];
+    const h=clone(HEAD);h.winners[bt.dataset.sx]=[bt.dataset.id];
     try{await headSave(h);sfx.win();burst(innerWidth/2,innerHeight/3,90);lastSig="";await refreshNow()}catch(e){sfx.error()}
   });
   const q=id=>document.getElementById(id);
-  if(q("hStart"))q("hStart").onclick=async()=>{sfx.win();try{await headSave({round:1,w1:{},w2:{},w3:{}});hLevel=1;lastSig="";await refreshNow()}catch(e){sfx.error()}};
+  if(q("hStart"))q("hStart").onclick=async()=>{sfx.win();try{await headSave({round:1,enabled:HEAD.enabled,finalists:{b:[],g:[]},winners:{b:[],g:[]}});hLevel=1;lastSig="";await refreshNow()}catch(e){sfx.error()}};
+  if(q("hToggle"))q("hToggle").onclick=async()=>{
+    sfx.click();const h=clone(HEAD);h.enabled=!(h.enabled!==false);
+    try{await headSave(h);lastSig="";await refreshNow()}catch(e){sfx.error()}
+  };
+  if(q("hOpenVote"))q("hOpenVote").onclick=()=>{
+    sfx.boing();
+    popup({icon:"🗳️",title:"Open Level 3 to the whole school?",text:`Finalists — 👦 ${HEAD.finalists.b.map(i=>ALL[i].name).join(", ")}<br>👧 ${HEAD.finalists.g.map(i=>ALL[i].name).join(", ")}`,buttons:[{label:"Cancel",cls:"red"},{label:"Yes, open it!",cls:"green",fn:async()=>{
+      const h=clone(HEAD);h.round=3;try{await headSave(h);hLevel=3;lastSig="";sfx.win();await refreshNow()}catch(e){sfx.error()}
+    }}]});
+  };
   if(q("hNext"))q("hNext").onclick=headAdvance;
   if(q("hUndo"))q("hUndo").onclick=headUndo;
   if(q("hReveal"))q("hReveal").onclick=()=>{sfx.win();go(screenReveal)};
   if(q("hPrint"))q("hPrint").onclick=()=>{hLevel=4;paintHead();setTimeout(()=>window.print(),150)};
 }
 async function headAdvance(){
-  /* always re-read the counts from the server first, so the winners are computed from the very latest votes */
   try{const x=await fetchHeadResults();lastHead=x;if(x.head)HEAD=normHead(x.head)}catch(e){sfx.error();return}
-  const r=HEAD.round,c=(lastHead.counts||{})[r]||{},h=clone(HEAD),notes=[];
-  const top=(ids,label)=>{const m=Math.max(0,...ids.map(i=>c[i]||0)),t=ids.filter(i=>(c[i]||0)===m);
-    if(m===0)notes.push(`No votes at all: ${label} → everyone advances`);else if(t.length>1)notes.push(`Tie: ${label} (${t.map(i=>ALL[i].name).join(", ")}) → all advance`);return t};
-  if(r===1){h.w1={};YEARS.forEach(y=>CLASSES.forEach(L=>{const arr=DATA[y][L];h.w1[`${y}${L}`]={b:top(idsOf(arr,"b"),`${y}${L} boys`),g:top(idsOf(arr,"g"),`${y}${L} girls`)}}))}
-  else if(r===2){h.w2={};h.w3={};
-    YEARS.forEach(y=>{const bs=[],gs=[];CLASSES.forEach(L=>{const w=h.w1[`${y}${L}`];bs.push(...w.b);gs.push(...w.g)});h.w2[y]={b:top(bs,`Year ${y} boys`),g:top(gs,`Year ${y} girls`)}});
-    GROUPS.filter(G=>G.years.length===1).forEach(G=>{const w=h.w2[G.years[0]];h.w3[G.id]={b:w.b.slice(),g:w.g.slice()}})}
-  else if(r===3){GROUPS.filter(G=>G.years.length>1).forEach(G=>{const bs=[],gs=[];G.years.forEach(y=>{bs.push(...h.w2[y].b);gs.push(...h.w2[y].g)});h.w3[G.id]={b:top(bs,`${G.label} boys`),g:top(gs,`${G.label} girls`)}})}
-  h.round=r+1;
-  const shown=notes.slice(0,8).map(n=>"• "+n).join("<br>")+(notes.length>8?`<br>…and ${notes.length-8} more`:"");
-  sfx.boing();
-  popup({icon:r===3?"👑":"⏭️",title:r===3?"Crown the winners?":`Close Level ${r}?`,text:`${r===3?"Level 3 will close and the Head Boy &amp; Head Girl are decided.":`Level ${r} closes for good and the winners move up to Level ${r+1}.`}${shown?`<br><br><small style="text-align:left;display:block">${shown}</small>`:""}`,
-    buttons:[{label:"Cancel",cls:"red"},{label:"Yes, go!",cls:"green",fn:async()=>{
-      try{await headSave(h);hLevel=Math.min(h.round,4);lastSig="";sfx.win();if(h.round===4){rain()}await refreshNow()}catch(e){sfx.error()}}}]});
+  const r=HEAD.round;
+  if(r===1){
+    popup({icon:"🎤",title:"Close nominations & start Interview?",text:"Level 1 closes for good. You'll then pick which nominees pass their interview.",buttons:[{label:"Cancel",cls:"red"},{label:"Yes, go!",cls:"green",fn:async()=>{
+      const h=clone(HEAD);h.round=2;try{await headSave(h);hLevel=2;lastSig="";sfx.win();await refreshNow()}catch(e){sfx.error()}
+    }}]});
+  }else if(r===3){
+    const c=(lastHead.counts||{})[3]||{},notes=[];
+    const top=(ids,label)=>{const m=Math.max(0,...ids.map(i=>c[i]||0)),t=ids.filter(i=>(c[i]||0)===m);
+      if(m===0)notes.push(`No votes at all: ${label} → picking all finalists as co-winners`);else if(t.length>1)notes.push(`Tie: ${label} (${t.map(i=>ALL[i].name).join(", ")})`);return t};
+    const h=clone(HEAD);h.winners={b:top(HEAD.finalists.b,"Head Boy"),g:top(HEAD.finalists.g,"Head Girl")};h.round=4;
+    const shown=notes.map(n=>"• "+n).join("<br>");
+    popup({icon:"👑",title:"Crown the winners?",text:`Level 3 will close and the Head Boy &amp; Head Girl are decided.${shown?`<br><br><small style="text-align:left;display:block">${shown}</small>`:""}`,buttons:[{label:"Cancel",cls:"red"},{label:"Yes, go!",cls:"green",fn:async()=>{
+      try{await headSave(h);hLevel=4;lastSig="";sfx.win();rain();await refreshNow()}catch(e){sfx.error()}
+    }}]});
+  }
 }
 async function headUndo(){
   try{const x=await fetchHeadResults();lastHead=x;if(x.head)HEAD=normHead(x.head)}catch(e){sfx.error();return}
   const r=HEAD.round,bal=(lastHead.ballots||{}),n=(bal[r]&&bal[r].total)||0;
-  if(r>=1&&r<=3&&n>0){sfx.error();popup({icon:"🚫",title:"Can't undo now",text:`Level ${r} already has ${n} ballots. Undo only works while a level has zero votes.`,buttons:[{label:"OK",cls:"green"}]});return}
+  if((r===1||r===3)&&n>0){sfx.error();popup({icon:"🚫",title:"Can't undo now",text:`Level ${r} already has ${n} ballots. Undo only works while a level has zero votes.`,buttons:[{label:"OK",cls:"green"}]});return}
   const h=clone(HEAD);
-  if(r===1){h.round=0}
-  else if(r===2){h.round=1;h.w1={};h.w2={};h.w3={}}
-  else if(r===3){h.round=2;h.w2={};h.w3={}}
-  else if(r===4){h.round=3;h.w3={};GROUPS.filter(G=>G.years.length===1).forEach(G=>{const w=h.w2[G.years[0]];if(w)h.w3[G.id]={b:w.b.slice(),g:w.g.slice()}})}
+  if(r===1)h.round=0;
+  else if(r===2)h.round=1;
+  else if(r===3)h.round=2;
+  else if(r===4)h.round=3;
   else return;
-  popup({icon:"↩",title:"Go back one step?",text:r===4?"Level 3 opens again so people can vote.":r===1?"The Head election goes back to 'not started'.":`Level ${r-1} opens again.`,buttons:[{label:"Cancel",cls:"red"},{label:"Yes, undo",cls:"green",fn:async()=>{try{await headSave(h);hLevel=Math.max(1,h.round);lastSig="";await refreshNow()}catch(e){sfx.error()}}}]});
+  const txt=r===4?"Level 3 opens again so people can vote.":r===2?"Interview closes and nominations (Level 1) reopen.":r===1?"The Head election goes back to 'not started'.":"Interview (Level 2) reopens.";
+  popup({icon:"↩",title:"Go back one step?",text:txt,buttons:[{label:"Cancel",cls:"red"},{label:"Yes, undo",cls:"green",fn:async()=>{try{await headSave(h);hLevel=Math.max(1,h.round);lastSig="";await refreshNow()}catch(e){sfx.error()}}}]});
 }
 function headCsv(d){
-  const c=d.counts||{},rows=[["Level","Group","Gender","Candidate","Class","Votes","Advanced"]],flag=(w,p)=>w&&w[p.sx].includes(p.id)?"Yes":"";
-  const g=p=>p.sx==="b"?"Boy":"Girl";
-  YEARS.forEach(y=>CLASSES.forEach(L=>DATA[y][L].forEach(p=>rows.push([1,`${y}${L}`,g(p),p.name,p.cls,(c[1]||{})[p.id]||0,flag(HEAD.w1[`${y}${L}`],p)]))));
-  YEARS.forEach(y=>{CLASSES.forEach(L=>{const w=HEAD.w1[`${y}${L}`];if(w)[...w.b,...w.g].forEach(id=>{const p=ALL[id];rows.push([2,`Year ${y}`,g(p),p.name,p.cls,(c[2]||{})[id]||0,flag(HEAD.w2[y],p)])})})});
-  GROUPS.filter(G=>G.years.length>1).forEach(G=>G.years.forEach(y=>{const w=HEAD.w2[y];if(w)[...w.b,...w.g].forEach(id=>{const p=ALL[id];rows.push([3,G.label,g(p),p.name,p.cls,(c[3]||{})[id]||0,flag(HEAD.w3[G.id],p)])})}));
-  GROUPS.forEach(G=>{const w=HEAD.w3[G.id];if(w)["b","g"].forEach(sx=>rows.push(["WINNER",G.label,sx==="b"?"Boy":"Girl",w[sx].map(i=>ALL[i].name).join(" / "),w[sx].map(i=>ALL[i].cls).join(" / "),"",""]))});
+  const c=d.counts||{},pool=headPoolAll(),rows=[["Level","Boy/Girl","Candidate","Class","Nomination Votes","Interview Finalist","Final Votes","Winner"]];
+  [...pool.b,...pool.g].forEach(p=>{
+    const fin=HEAD.finalists[p.sx].includes(p.id)?"Yes":"";
+    const win=HEAD.winners[p.sx].includes(p.id)?"Yes":"";
+    rows.push([1,p.sx==="b"?"Boy":"Girl",p.name,p.cls,(c[1]||{})[p.id]||0,fin,(c[3]||{})[p.id]||0,win]);
+  });
   return rows.map(r=>r.join(",")).join("\n");
 }
 /* ---------------- winners reveal ceremony ---------------- */
 function screenReveal(){
-  const list=[];GROUPS.forEach(G=>{const w=HEAD.w3[G.id];if(w)["g","b"].forEach(sx=>list.push({G,sx,ids:w[sx]}))});
+  const w=HEAD.winners||{b:[],g:[]};
+  const list=[];if(w.g.length)list.push({sx:"g",ids:w.g});if(w.b.length)list.push({sx:"b",ids:w.b});
   let i=0;
   app.innerHTML=`${hero("👑 Head Boy &amp; Head Girl — Winners")}<div class="card center rvbox" id="rv"></div>`;
   const box=document.getElementById("rv");
   const board=()=>{
-    box.innerHTML=`<h2 style="margin-top:0">🎉 Congratulations to our winners! 🎉</h2>${winnersHTML(lastHead?lastHead.counts:{},false)}
+    box.innerHTML=`<h2 style="margin-top:0">🎉 Congratulations to our winners! 🎉</h2>${winnersHTML(false)}
     <div class="row noprint" style="margin-top:18px"><button class="btn" id="bk">⬅ Back to results</button><button class="btn green" id="pr">🖨 Print</button><button class="btn red" id="again">🎬 Replay</button></div>`;
     rain();
     document.getElementById("bk").onclick=()=>{sfx.click();go(screenResults)};
@@ -837,7 +936,7 @@ function screenReveal(){
   };
   const step=()=>{
     if(i>=list.length){board();return}
-    const it=list[i],title=`${it.sx==="g"?"👧 Head Girl":"👦 Head Boy"} · ${it.G.label}`;
+    const it=list[i],title=it.sx==="g"?"👧 Head Girl":"👦 Head Boy";
     box.innerHTML=`<div style="opacity:.75">Reveal ${i+1} of ${list.length}</div><h2 style="margin:6px 0">${title}</h2><div class="rvav" id="av">❓</div><div class="rvname" id="nm">And the winner is…</div><div class="row" style="margin-top:14px"><button class="btn green" id="go" style="font-size:1.4rem;padding:16px 30px">🥁 Reveal!</button></div>`;
     document.getElementById("go").onclick=()=>{
       const bt=document.getElementById("go");bt.disabled=true;sfx.drum();
@@ -878,7 +977,7 @@ function screenResults(){
   if(resTab==="council"&&lastRes)paintResults();
   if(resTab==="head"&&lastHead){if(HEAD.round>0)hLevel=Math.min(HEAD.round,4);paintHead()}
   refresh();
-  if(serverMode)resTimer=setInterval(refresh,4000);
+  if(serverMode)resTimer=setInterval(refresh,2000);
   document.getElementById("back").onclick=()=>{sfx.click();resPass=null;go(screenHome)};
   document.getElementById("csv").onclick=()=>{
     sfx.click();const isH=resTab==="head",d=isH?lastHead:lastRes;if(!d)return;
@@ -912,10 +1011,10 @@ function screenResults(){
    ===================================================================== */
 addEventListener("pageshow",e=>{if(e.persisted&&(state.mode==="phone"||qrEntry)){state.mode="phone";go(screenElection)}});
 (async function boot(){
-  const minWait=new Promise(r=>setTimeout(r,2400));
+  const minWait=new Promise(r=>setTimeout(r,700));
   await detectServer();
   await minWait;
-  const sp=document.getElementById("splash");sp.classList.add("out");setTimeout(()=>sp.remove(),700);
+  const sp=document.getElementById("splash");sp.classList.add("out");setTimeout(()=>sp.remove(),260);
   if(qrEntry){state.mode="phone";go(screenElection);return}
   go(screenHome);
 })();
